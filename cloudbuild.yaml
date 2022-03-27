@@ -1,5 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag', 'gcr.io/medicineAPI/medicineAPI:$SHORT_SHA', '.']
+  args: ['builds', '--tag', 'gcr.io/medicineAPI/medicineAPI:$SHORT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/medicineAPI/medicineAPI:$SHORT_SHA', '.']
