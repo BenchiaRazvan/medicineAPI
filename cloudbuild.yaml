@@ -3,3 +3,6 @@ steps:
   args: ['build', '-t', 'gcr.io/medicineapi/medicineapi:$SHORT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/medicineapi/medicineapi:$SHORT_SHA']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['beta', 'run' 'deploy', 'medicineapi', '--region=europe-west1', '--platform=managed', '--image=gcr.io/medicineapi/medicineapi:$SHORT_SHA']
+  
