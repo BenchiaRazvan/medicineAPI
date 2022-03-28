@@ -4,7 +4,6 @@ const mysql = require('mysql');
 var app = express();
 
 var pool = mysql.createPool({
-    socketPath:'/cloudsql/medicineapi:europe-central2:medicinedbinstance',
     host:'34.116.183.91',
     database: 'questions',
     user:'root',
