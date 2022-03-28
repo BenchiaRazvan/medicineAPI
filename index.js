@@ -3,7 +3,7 @@ const mysql = require('mysql');
 
 var app = express();
 
-var pool = mysql.createConnection({
+var pool = mysql.createPool({
     socketPath:'/cloudsql/medicineapi:europe-central2:medicinedbinstance',
     host:'34.116.183.91',
     database: 'questions',
@@ -13,22 +13,17 @@ var pool = mysql.createConnection({
 
 app.get("/", (req, res, next) => {
 
-    pool.connect(function(err){
-        if(err)
-        return console.error("error: " + err.message)
-        console.log("connected")
-    })
-    // const query = "SELECT * FROM questions"
+    const query = "SELECT * FROM questions"
     
-    // pool.query(query, [] , (error, result)=>{
-    //     //if(error) throw error
-    //     if(!result[0]){
-    //         res.json({status:"not found!"})
-    //     }
-    //     else{
-    //         res.json(result[0])
-    //     }
-    // })
+    pool.query(query, [] , (error, result)=>{
+        if(error) throw error
+        if(!result[0]){
+            res.json({status:"not found!"})
+        }
+        else{
+            res.json(result[0])
+        }
+    })
    
 });
 
