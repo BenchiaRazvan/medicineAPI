@@ -17,12 +17,14 @@ app.get("/", (req, res, next) => {
     
     pool.query(query, [] , (error, result)=>{
         if(error) res.json({status:error.stack})
+        else{
         if(!result[0]){
             res.json({status:"not found!"})
         }
         else{
             res.json(result[0])
         }
+    }
     })
    
 });
