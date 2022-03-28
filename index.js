@@ -15,8 +15,8 @@ app.get("/", (req, res, next) => {
 
     pool.connect(function(err){
         if(err)
-        return console.error("error: " + err.message)
-        console.log("connected")
+        return res.send("error: " + err.message)
+        res.send("connected")
     })
     // const query = "SELECT * FROM questions"
     
