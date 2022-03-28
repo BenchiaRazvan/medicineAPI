@@ -16,7 +16,7 @@ app.get("/", (req, res, next) => {
     const query = "SELECT * FROM questions"
     
     pool.query(query, [] , (error, result)=>{
-        if(error) throw error
+        if(error) res.json({status:"err"})
         if(!result[0]){
             res.json({status:"not found!"})
         }
