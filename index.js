@@ -45,7 +45,7 @@ app.get("/", (req, res, next) => {
             res.json({status:"not found!"})
         }
         else{
-            translateText(result[0].question_description, 'ro')
+            translateText(result[0].question_description, 'it')
                 .then((r) => {
                     res.json(r)
                 })
